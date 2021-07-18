@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+//Metodos para establecer el valor de this
+//THIS USANDO CALL
+function saludar() {
+    console.log(`Hola. Soy ${this.name} ${this.apellido}`);
+}
+const rodri = {
+    name: "Rodrigo",
+    apellido: "Zucchini"
+}
+saludar.call(rodri);
+
+//THIS Y CALL CON ARGUMENTOS DE LA FUNCION
+function caminar(metros, direccion) {
+    console.log(`${this.name} camina ${metros} metros hacia ${direccion}`);
+}
+
+caminar.call(rodri, 400, 'sur');
+//THIS USANDO APPLY (datos se pasan con arreglos)
+caminar.apply(rodri, [802, 'noreste']);
+
+//THIS USANDO BIND (establece una nueva funcion usando bind)
+const dario = { name: 'Dario', apellido: 'Sanchez'};
+const darioSaluda = saludar.bind(dario);
+darioSaluda();
+    </script>
+</body>
+</html>

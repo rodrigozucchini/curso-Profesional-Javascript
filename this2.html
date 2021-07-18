@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+//THIS Se refiere a la instancia de la clase
+//This en global scope / ES WINDOWS
+console.log(`this: ${this}`);
+
+//This en el scope de una function / ES WINDOWS: si ejecutamos funcion directamente
+function queEsThis () {
+    return this;
+}
+console.log(`queEsThis: ${queEsThis()}`);
+
+//This en el scope de Stric Mode / Sirve para evitar algunos errores
+function esThisStric() {
+    'use stric';
+    return this;
+}
+console.log(`esThisStric(): ${esThisStric()}`);
+
+//This en el contexto de objeto / this se refiere al objeto acá
+const yo = {
+    name: 'Rodrigo',
+    saludar: function () {
+        console.log(`Hola soy ${this.name}`)
+    }
+}
+yo.saludar();
+
+//This cuando sacamos funcion saludar del objeto /This sería windows
+const nombre = yo.saludar;
+nombre();
+
+//This en contexto de clases /This se refiere al objeto instanciado ej: Rodrigo
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.saludar = function () {
+    console.log(`Me llamo ${this.name}`);
+}
+
+const rodrigo = new Person('Rodrigo');
+rodrigo.saludar();
+
+    </script>
+</body>
+</html>

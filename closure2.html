@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+        //IIFE Expresion funcional que envonca inmediatamente una funcion
+        (function() {
+            let yo = 'Rodrigo Zucchini'
+                function nombreYApellido() {
+                    console.log(yo);
+                }
+            nombreYApellido();
+        })();
+
+        //Funciones que regresan funciones
+        function masnombreYApellido(yo) {
+            let yoMessage = `El nombre es ${yo}`;
+
+            return function() {
+                console.log(yoMessage);
+            };
+        }
+        let otronombreYApellido = masnombreYApellido('Angel Cabañas');
+        console.log(otronombreYApellido());
+
+        //variables privadas 
+        function fabricarContador(n) {
+            let contador = n;
+
+            return {
+                increase: function() {
+                    contador = contador +1;
+                },
+                decrease: function() {
+                    contador = contador -1;
+                },
+                obtenerContador: function () {
+                    return contador;
+                },
+            };
+        }
+        let contador = fabricarContador(5);
+        console.log('El contador es:', contador.obtenerContador());
+        contador.increase();
+        console.log('El contador es:', contador.obtenerContador());
+        contador.increase();
+        console.log('El contador es:', contador.obtenerContador());
+    </script>
+</body>
+</html>

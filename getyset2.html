@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+//GETTERS Y SETTERS 
+// Una función que obtiene un valor de una propiedad se llama getter y una que establece el valor de una propiedad se llama setter.
+
+const obj = {
+  get prop() {
+    return this.__prop__;
+  },
+  set prop(value) {
+    this.__prop__ = value * 2;
+  },
+};
+
+obj.prop = 12;
+
+console.log(obj.prop); //24
+
+    </script>
+</body>
+</html>

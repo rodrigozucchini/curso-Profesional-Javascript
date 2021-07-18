@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+
+<script>
+//GENERATOR
+
+//function* simpleGenerator() {
+//    console.log('Mi nombre es Rodrigo');
+//    yield;
+//    console.log('Mi nombre es Javier');
+//    yield;
+//}
+//const gen = simpleGenerator()
+
+
+//Con next no solo vemos el resultado de nestro generador sino que tambien podemos pasar valores que la funcion recibe
+function* contador() {
+    let id = 1;
+    let reset;
+    while (true) {
+        reset = yield id;
+        if (reset) {
+            id = 1;
+        } else {
+            id = id + 1; 
+        }
+    }
+}
+//Ej Fibbonacci() 
+function* fibbonacci () {
+    let a = 1;
+    let b = 1;
+    while (true) {
+        const newNumber = a + b;
+        a = b;
+        b = newNumber;
+        yield newNumber;
+    }
+}
+
+</script>
+</body>
+</html>

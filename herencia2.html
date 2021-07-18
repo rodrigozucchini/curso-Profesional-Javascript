@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+
+function Hero1(name) {
+    this.name = name;
+}
+
+Hero1.prototype.saludar = function() {
+    console.log(`New: ${this.name}`);
+};
+
+const zelda = new Hero1('Zelda');
+zelda.saludar();
+
+//has OwnProperty (para saber si se heredo algo)
+console.log('zelda.hasOwnProperty("name"):', zelda.hasOwnProperty("name"));
+
+//SomeObject.prototype: objeto donde definimos el prototipo de las instancias de Some Object. Es decir, las intancias de SomeObject que van a heredar de SomeObject.prototype
+
+//SomeObject.[[Prototype]]: es el prototipo de SomeObject, Es decir, SomeObject hereda de SomeObject.prototype
+    </script>
+</body>
+</html>

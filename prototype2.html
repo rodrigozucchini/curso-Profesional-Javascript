@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>En consola</p>
+    <script>
+//Objeto común y corriente
+const zelda = {
+    name: "Zelda"
+}
+
+zelda.saludar = function() {
+    console.log(`Hola soy ${this.name}`)
+}
+zelda.saludar()
+
+const link = {
+    name: "Link"
+}
+
+link.saludar = function() {
+    console.log(`Hola soy ${this.name}`)
+}
+link.saludar()
+
+//Eficiencia
+const heroMethods = {
+    saludar: function() {
+        console.log(`Me llamo ${this.name}`);
+    },
+};
+
+function Hero(name) {
+    const hero = {
+        name: name,
+    };
+    hero.saludar = heroMethods.saludar;
+    return hero;
+}
+
+const zelda1 = Hero('Zelda');
+zelda1.saludar();
+
+const link1 = Hero('Link');
+link1.saludar();
+
+
+
+//Object.create
+//const nuevoObjeto = Object.create(objeto)
+const heroMethods = {
+    saludar: function() {
+        console.log(`Soy superheroe ${this.name}`);
+    },
+};
+
+function Hero(name) {
+    const hero = Object.create(heroMethods);
+    hero.name = name;
+
+    return hero;
+}
+
+const zelda1 = Hero('Zelda');
+zelda1.saludar();
+
+const link1 = Hero('Link');
+link1.saludar();
+
+//Metodos Hero dentro del Hero
+//const heroMethods = {
+//    saludar: function() {
+//        console.log(`Soy superheroe ${this.name}`);
+//    },
+//};
+
+function Hero(name) {
+    const hero = Object.create(Hero.prototype);
+    hero.name = name;
+
+    return hero;
+}
+
+
+
+Hero.prototype.saludar = function() {
+    console.log(`Soy superheroina ${this.name}`);
+};
+
+const zelda1 = Hero('Zelda');
+zelda1.saludar();
+
+const link1 = Hero('Link');
+link1.saludar();
+
+//New (atajo para facilitar algunos procesos)
+function Hero1(name) {
+    this.name = name;
+}
+
+Hero1.prototype.saludar = function() {
+    console.log(`New: ${this.name}`);
+};
+
+const zelda2 = new Hero1('Zelda');
+zelda1.saludar();
+
+const link2 = new Hero1('Link');
+link1.saludar();
+
+
+    </script>
+</body>
+</html>
